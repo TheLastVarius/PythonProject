@@ -6,18 +6,13 @@ def fun_repeat(randomlist):
     return retlist
 
 def data_type(randomlist):
-    import re
-    mystr = '' 
-    searchstr = ''
     retlist = []
-    for element in randomlist:
-        mystr = mystr + str(type(element))
-    searchlist = re.findall('\'(\w*)\'', mystr)
-    for i in searchlist:
-	if retlist.count(i) < 1:
-		searchstr = searchstr + str(i) + ' => ' +  str(searchlist.count(i)) + ' '
-		retlist.append(i)
-    return searchstr
+    type_list = [element.__class__.__name__ for element in randomlist]
+    for element in type_list:
+	addstr = element + ' => ' + str(type_list.count(element))
+        if retlist.count(addstr) == 0:
+	    retlist.append(addstr)
+    return ' '.join(retlist)
 		
 def sort_last(randomlist):
     randomlist.sort(key = lambda randomlist:randomlist[-1])
@@ -65,7 +60,7 @@ def posled(randomlist):
     return [workspis[schet] for schet in indexlist]
 
 print fun_repeat(['cat',3,4,5,6,7,8,2,3,4,'cat','bed'])
-print data_type([2,3.2,5,6,'dog','python', 'cat', [2,3,4],[3,33]])
+print data_type([2,5,6,3.5,4.6,'dog','python', 'cat', [2,3,4],[3,33]])
 print sort_last(['BANANA', 'ZOEC', 'MassE', 'UpdateD', 'KalimanB'])
 print spis_str(['Alibek','Caid','Dagestan','Erevan'], 'Bishkek')
 print twospis([1,3,5,7,9], [2,4,6,8], 4)
