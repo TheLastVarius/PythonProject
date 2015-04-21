@@ -1,8 +1,8 @@
 def fun_repeat(randomlist):
     retlist = []
-    for i in randomlist:
-	if randomlist.count(i) > 1 and retlist.count(i) < 1:
-	        retlist.append(i)
+    for schet in randomlist:
+	if randomlist.count(schet) > 1 and retlist.count(schet) < 1:
+	        retlist.append(schet)
     return retlist
 
 def data_type(randomlist):
