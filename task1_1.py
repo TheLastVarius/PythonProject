@@ -2,12 +2,12 @@
 
 def multipliers(number):
     factors = []
-    d = 2
+    divider = 2
     while number  > 1:
-        while number % d == 0:
-            factors.append(d)
-            number /= d
-        d += 1
+        while number % divider == 0:
+            factors.append(divider)
+            number /= divider
+        divider += 1
     return factors
  
 def equation(a, b, c):
@@ -20,22 +20,21 @@ def equation(a, b, c):
     return n
 
 def simple(number):
-    z="Prostoye"
-    for i in range(2,number-1):
-        if number%i == 0:
-	    print i
-            z="NEPROSTOYE"
-	    return z
-    return z
+    import math
+    ret_phrase = "Prostoye"
+    for divider in range(2, int(math.sqrt(number))):
+        if number%divider == 0:
+            ret_phrase = "NEPROSTOYE"
+    return ret_phrase
  	
 # atm uses only 100, 50, 20, 10, 5 and 1 notes.
 def atm(summ):
-    A=[]
-    for i in [100, 50, 20, 10, 5, 1]:
-        k = summ//i
-        summ = summ - k * i
-        A.append(k)
-    return A
+    retspis = []
+    for nom in [100, 50, 20, 10, 5, 1]:
+        col_cup = summ//nom
+        summ = summ - col_cup * nom
+        retspis.append(col_cup)
+    return retspis
  
 print multipliers(30030)
  
