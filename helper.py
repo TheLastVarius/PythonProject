@@ -3,7 +3,7 @@ import datetime
 import os
 import platform
 
-
+print 'Add -h argument for help'
 parser = argparse.ArgumentParser()
 parser.add_argument("-t", "--time",    action="store_true", help="Get current time")
 parser.add_argument("-d", "--date",    action="store_true", help="Get today date") 
