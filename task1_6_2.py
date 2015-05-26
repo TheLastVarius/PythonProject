@@ -54,9 +54,8 @@ for comb_list in nest_func():
     print comb_list
 
 
-#Задание 1_6_2. Часть d. Написать генератор на *args **kwargs otional, named
-#Обьявление функции на базе *args
-def func_args(*args):
+#Задание 1_6_2. Часть d. Написать генератор на *args, **kwargs, optional, named
+def func_args(*args, **kwargs):
     for arg in args:
         yield args
 
@@ -64,6 +63,13 @@ cloud = [1,2,3,4,5]
 for element in func_args(cloud):
     print element
 
+def func_opt_name(fish,dog="Sharic", cat="Murka"):
+    work_list = [fish, dog, cat]
+    for element in itertools.permutations(work_list):
+        yield element
+
+for element in func_opt_name("Molchun", "Baron"):
+    print element
 
 #Задание 1_6_2.py Часть е. Написать декоратор, показывающий время работы функции. 
 def time_work_func_decor(randomfunc):
