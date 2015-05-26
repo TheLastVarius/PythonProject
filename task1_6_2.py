@@ -1,13 +1,14 @@
 #!/usr/bin/python
 #coding:utf8
 
+
 import os
 import math
-import itertools
 import time
+import itertools
+
 
 #Задание 1_6_2. Функции. Часть А. Написать функцию, возвращающую несколько значений. 
-#Объявление функции.
 def resh(a, b, c):
     D = b ** 2 - 4 * a * c
     if D > 0:
@@ -15,32 +16,6 @@ def resh(a, b, c):
         x2 = math.copysign(b,-1) - math.sqrt(D) / (2 * a)
         return x1, x2
 
-
-#Задание 1_6_2. Часть В. Написать генератор. 
-#Объявление функции.
-def all_comb(randomlist):
-    for element in itertools.permutations(randomlist):
-        yield element
-
-
-#Задание 1_6_2. Часть С. Написать генератор на lambda, nested function, closure.
-#Обьявление функции на базе nested function, closure.
-def all_comb_nest(randomlist):
-    def all_comb_ret_nest():
-        for element in itertools.permutations(randomlist):
-            yield element
-    return all_comb_ret_nest
-        
-
-#Задание 1_6_2. Часть d. Написать генератор на *args **kwargs otional, named
-#Обьявление функции на базе *args
-def func_args(*args):
-    for arg in args:
-        yield arg
-
-
-#Задание 1_6_2. Функции. Часть А. Написать функцию, возвращающую несколько значений. 
-#Работа с функцией.
 print "Введите значения коэффициентов а, b, с, для уравнения вида ax^2 + bx +c = 0"
 try:
     x1, x2 = resh(input(), input() , input())
@@ -51,30 +26,40 @@ else:
 print "--------------------------------------------------------"
 
 
-#Задание 1_6_2. Часть B. Написать генератор.
-#Работа с функцией.
-print "Генератор, введите список"
+#Задание 1_6_2. Часть В. Написать генератор. 
+def all_comb(randomlist):
+    for element in itertools.permutations(randomlist):
+        yield element
+
+print "Генератор, введите список вида a,b,c,..."
 for comb_list in all_comb(input()):
     print comb_list
 
 
 #Задание 1_6_2. Часть С. Написать генератор на lambda, nested function, closure.
-
-#Работа с функцией на основе lambda.
-print "Генератор на lambda, введите список"
+def all_comb_nest(randomlist):
+    def all_comb_ret_nest():
+        for element in itertools.permutations(randomlist):
+            yield element
+    return all_comb_ret_nest
+        
+print "Генератор на lambda, введите список вида a,b,c,..."
 lamb_gen = lambda: itertools.permutations(input())
 for element in lamb_gen():
     print element
 
-#Работа с функцией на основе nested functon, closure.
-print "Генератор на nest func, введите список"
+print "Генератор на nest func, введите список вида a,b,c,..."
 nest_func = all_comb_nest(input())
 for comb_list in nest_func():
     print comb_list
 
 
-#Задание 1_6_2. Часть d. Написать генератор на *args **kwargs optional, named
-#Работа с функцией на основе *args
+#Задание 1_6_2. Часть d. Написать генератор на *args **kwargs otional, named
+#Обьявление функции на базе *args
+def func_args(*args):
+    for arg in args:
+        yield args
+
 cloud = [1,2,3,4,5]
 for element in func_args(cloud):
     print element
