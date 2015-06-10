@@ -20,7 +20,7 @@ class template:
             template.tag_list.append(element)
         return None
 
-    @property
+
     def treatments(self):
 
         work_file = open(template.wall_to_file,'r')
@@ -94,6 +94,6 @@ my_object = template()
 my_object.filewall()
 my_object.tags_list()
 try:
-    my_object.treatments
+    my_object.treatments()
 except(FileNotFoundError):
     print ("Введите корректный путь к файлу. Программа завершена.")
